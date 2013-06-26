@@ -19,12 +19,23 @@ import org.chromium.content.common.TraceEvent;
 @JNINamespace("android_webview")
 public class JavaBrowserViewRendererHelper {
 
+    
+    private static Bitmap bitmap = null;
+    private static int last_width = 0;
+    private static int last_height = 0;
+    
     /**
      * Provides a Bitmap object with a given width and height used for auxiliary rasterization.
      */
     @CalledByNative
     private static Bitmap createBitmap(int width, int height) {
-        return Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        
+      if(last_width != width || last_height != height) {
+        bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        last_width = width;
+        last_height = height;
+      }
+      return bitmap;
     }
 
     /**

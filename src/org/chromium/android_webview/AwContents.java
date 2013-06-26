@@ -4,6 +4,7 @@
 
 package org.chromium.android_webview;
 
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -525,6 +526,7 @@ public class AwContents {
         if (mNativeAwContents == 0) return;
 
         canvas.getClipBounds(mClipBoundsTemporary);
+        
         if (!nativeOnDraw(mNativeAwContents, canvas, canvas.isHardwareAccelerated(),
                     mContainerView.getScrollX(), mContainerView.getScrollY(),
                     mClipBoundsTemporary.left, mClipBoundsTemporary.top,
@@ -535,6 +537,7 @@ public class AwContents {
         }
     }
 
+    @SuppressLint("WrongCall")
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         mLayoutSizer.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }

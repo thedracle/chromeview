@@ -125,9 +125,9 @@ class AwContentsClientCallbackHelper {
 
     public void postOnDownloadStart(String url, String userAgent, String contentDisposition,
             String mimeType, long contentLength) {
-        DownloadInfo info = new DownloadInfo(url, userAgent, contentDisposition, mimeType,
-                contentLength);
-        mHandler.sendMessage(mHandler.obtainMessage(MSG_ON_DOWNLOAD_START, info));
+        //DownloadInfo info = new DownloadInfo(url, userAgent, contentDisposition, mimeType,
+        //        contentLength);
+        mHandler.sendMessage(mHandler.obtainMessage(MSG_ON_DOWNLOAD_START, null/*info*/));
     }
 
     public void postOnReceivedLoginRequest(String realm, String account, String args) {
